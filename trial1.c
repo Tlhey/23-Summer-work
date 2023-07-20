@@ -17,39 +17,17 @@ double b1 = 1.1, b2 = 2.7e-4;
 FILE *fp1=NULL, *fp2=NULL, *fp3=NULL;
 void output_file(FILE *fp0, double array[]);
 
-//二阶差分
+//second differentiation
 double second_diff_euler(double y[],int n){
     return (y[n+1]-2*y[n]+y[n-1])/(dl*dl);
 }
-//四阶差分
+//fourth differentiation
 double fourth_diff_euler(double y[],int n){
     if(n==1)return (y[n+2]-4*y[n+1]+5*y[n]-4*y[n-1])    / (dl*dl*dl*dl);
     if(n==N-1)return (4*y[n+1]+5*y[n]-4*y[n-1]+y[n-2])  / (dl*dl*dl*dl);
     return (y[n+2]-4*y[n+1]+6*y[n]-4*y[n-1]+y[n-2])     / (dl*dl*dl*dl);
 }
 
-
-void init(){
-    dl=L/N;
-    for(int i=1;i<=N+5;i++){
-        a[i]=0; v[i]=0; x[i]=dl * i; y[i]=0;
-    }
-}
-
-// With the maxium height H
-void init_sin(double H){
-    for(int i=0;i<=N;i++){
-        y[i]=sin(pi*i/(double)N)*H;
-    }
-}
-
-// With the maxium height H
-void init_parabola(double H){
-    for(int i=0;i<=N;i++){
-        y[i]=x[i]*(L-x[i])*4/(double)(L*L)*H;
-        //printf("%3.8f ",y[i]);
-;    }
-}
 
 // Calculating the acceleration using y0 array, acceleration store in a0 array
 void cal_a_simple(double y0[], double a0[]){
