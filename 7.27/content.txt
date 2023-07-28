@@ -1,0 +1,2 @@
+Maybe the rk4 is usable. 
+Change the N and e,b, to see how the energy and others changes.
